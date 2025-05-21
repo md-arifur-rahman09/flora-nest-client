@@ -17,6 +17,13 @@ const Login = () => {
     loginUser(email, password)
       .then(result => {
         console.log(result.user);
+         Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "You are successfully logged in.",
+          showConfirmButton: false,
+          timer: 1500
+        });
         navigate("/")
       })
       .catch(error => {

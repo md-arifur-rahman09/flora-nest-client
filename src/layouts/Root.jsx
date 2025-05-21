@@ -9,10 +9,10 @@ const Root = () => {
           <nav>
             <Navbar></Navbar>
           </nav>
-          <main>
+          <main className= ' h-96 md:min-h-screen'>
             <Outlet></Outlet>
           </main>
-          <footer>
+          <footer className="bg-gray-300 text-white py-6 mt-10">
             <Footer></Footer>
           </footer>
         </div>

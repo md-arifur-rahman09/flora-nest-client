@@ -13,6 +13,7 @@ import MyPlants from './components/myPlants.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Error from './components/Error.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
+import PrivateRouter from './routes/PrivateRouter.jsx'
 
 const router = createBrowserRouter([
   {
@@ -20,11 +21,26 @@ const router = createBrowserRouter([
     Component: Root,
     children: [
       { index: true, Component: Home },
-      { path: '/allplants', Component: AllPlants },
-      { path: '/addplants', Component: AddPlants },
-      { path: '/myplants', Component: MyPlants },
-      { path: '/register', Component: Register },
-      { path: '/login', Component: Login }
+      {
+        path: '/allplants',
+        Component: AllPlants
+      },
+      {
+        path: '/addplants',
+        element: <PrivateRouter><AddPlants></AddPlants></PrivateRouter>
+      },
+      {
+        path: '/myplants',
+        element: <PrivateRouter><MyPlants></MyPlants></PrivateRouter>
+      },
+      {
+        path: '/register',
+        Component: Register
+      },
+      {
+        path: '/login',
+        Component: Login
+      }
     ]
   },
   {
