@@ -9,7 +9,7 @@ const Root = () => {
           <nav>
             <Navbar></Navbar>
           </nav>
-          <main className= ' h-96 md:min-h-screen'>
+          <main className= 'min-h-screen'>
             <Outlet></Outlet>
           </main>
           <footer className="bg-gray-300 text-white py-6 mt-10">

@@ -14,6 +14,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import Error from './components/Error.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
 import PrivateRouter from './routes/PrivateRouter.jsx'
+import PlantDetails from './components/PlantDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,13 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       {
         path: '/allplants',
-        Component: AllPlants
+        Component: AllPlants,
+        loader:()=> fetch("http://localhost:5000/trees")
+      },
+      {
+        path: "/plantDetails/:id",
+        element: <PrivateRouter><PlantDetails></PlantDetails></PrivateRouter>,
+        loader: ({params})=> fetch(`http://localhost:5000/trees/${params.id}`)
       },
       {
         path: '/addplants',
@@ -31,7 +38,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/myplants',
-        element: <PrivateRouter><MyPlants></MyPlants></PrivateRouter>
+        element: <PrivateRouter><MyPlants></MyPlants></PrivateRouter>,
+        loader:()=> fetch("http://localhost:5000/trees")
       },
       {
         path: '/register',
