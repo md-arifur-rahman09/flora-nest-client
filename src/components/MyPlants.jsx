@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 const MyPlants = () => {
-    const { user } = use(AuthContext)
+    const { user,dark} = use(AuthContext)
     const initialTrees = useLoaderData();
 const[trees,setTrees]=useState(initialTrees) 
 
@@ -48,7 +48,7 @@ const[trees,setTrees]=useState(initialTrees)
             <table className="table">
                 {/* head */}
                 <thead>
-                    <tr>
+                    <tr className={dark && "text-white"}>
                         <th>
                             No
                         </th>

@@ -3,8 +3,8 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../context/AuthContext';
 
 const AddPlants = () => {
-  const{user}=use(AuthContext);
-  
+  const { user} = use(AuthContext);
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -13,7 +13,7 @@ const AddPlants = () => {
     const treeData = Object.fromEntries(fromData.entries());
     console.log(treeData);
 
-  
+
 
 
 
@@ -30,7 +30,7 @@ const AddPlants = () => {
         console.log("data after post", data);
         if (data.insertedId) {
           Swal.fire({
-            
+
             icon: "success",
             title: "Your flower tree data is successfully added.",
             showConfirmButton: false,
@@ -45,15 +45,15 @@ const AddPlants = () => {
   }
   return (
 
-    <div className="card bg-base-100 w-full  mt-6 max-w-2xl mx-auto shrink-0 shadow-2xl">
+    <div className="card bg-base-100 w-full  mt-6 max-w-2xl mx-auto shrink-0 shadow-2xl ">
       <div className="card-body">
-        <h1 className="text-5xl font-bold mb-10 text-center text-gray-700">Add new Flower Plant</h1>
+        <h1 className="text-5xl font-bold mb-10 text-center text-gray-900">Add new Flower Plant</h1>
         <form onSubmit={handleSubmit} className="fieldset text-sm ">
 
-          <div className='grid grid-cols-2 gap-6' >
+          <div className='grid grid-cols-2 gap-6 ' >
             <div>
-              <label className="label">Plant Name</label>
-              <input type="text" className="input" placeholder="Plant Name" name='plantName' required />
+              <label className={`label `}>Plant Name</label>
+              <input type="text" className="input " placeholder="Plant Name" name='plantName' required />
             </div>
 
 
@@ -63,10 +63,14 @@ const AddPlants = () => {
               <label className="label">Species / Type</label>
               <input type="text" className="input" placeholder="Species / Type" name='species' required />
             </div>
-
             <div>
-              <label className="label">Date Added / Planted</label>
-              <input type="text" className="input" placeholder="Date Added / Planted" name='date' required />
+              <label className="label">Added Date</label>
+            <input
+              type="date"
+              className="input"
+              name="date"
+              defaultValue={new Date().toISOString().split("T")[0]}  required
+            />
             </div>
 
             <div>
@@ -76,7 +80,7 @@ const AddPlants = () => {
 
             <div>
               <label className="label">Sunlight Requirement / Day</label>
-              <input type="text" className="input" placeholder="Sunlight Requirement" name='sunlight'  required/>
+              <input type="text" className="input" placeholder="Sunlight Requirement" name='sunlight' required />
             </div>
 
             <div>
@@ -87,7 +91,7 @@ const AddPlants = () => {
             <div className='col-span-2'>
 
               <label className="label">Notes / Special Instructions</label>
-              <input type="text" className="input w-full" placeholder="Notes / Special Instructions" name='notes'  required/>
+              <input type="text" className="input w-full" placeholder="Notes / Special Instructions" name='notes' required />
             </div>
 
 
@@ -100,13 +104,13 @@ const AddPlants = () => {
             <div className='col-span-1'>
               <label className="label ">User Email</label>
               <br />
-              <input type="email" className="input " placeholder="Email" name='email' defaultValue={user.email} required/>
+              <input type="email" className="input " placeholder="Email" name='email' defaultValue={user.email} required disabled />
             </div>
 
             <div className='col-span-1'>
               <label className="label ">Name</label>
               <br />
-              <input type="text" className="input w-full" placeholder="Name" name='name' defaultValue={user.displayName} required />
+              <input type="text" className="input w-full" placeholder="Name" name='name' defaultValue={user.displayName} required disabled />
             </div>
 
           </div>

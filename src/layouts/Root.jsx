@@ -1,20 +1,20 @@
-import React, { use } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import { Outlet, useNavigation } from 'react-router';
 import Footer from '../components/Footer';
 import { AuthContext } from '../context/AuthContext';
 
 const Root = () => {
-  // const{dark}= use(AuthContext)
+
   const navigation=useNavigation();
   const isNavigating= Boolean(navigation.location);
 
     return (
-        <div >
+        <div  >
           <nav>
             <Navbar></Navbar>
           </nav>
-          <main className= 'min-h-screen '>
+          <main className= 'min-h-screen'>
           {isNavigating && <><span className="loading loading-ring loading-xl text-center "></span><span className="loading loading-ring loading-xl text-center "></span><span className="loading loading-ring loading-xl text-center "></span></>}
             <Outlet></Outlet>
           </main>

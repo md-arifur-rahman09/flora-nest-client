@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext'
 import { auth } from '../firebase/firebase.init'
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [dark, setDark] = useState(false);
     const [loading, setLoading] = useState(true);
+    const googleProvider = new GoogleAuthProvider();
 
     // dark light mode toogle
     const toogleTheme = () => setDark(!dark);
@@ -22,6 +23,12 @@ const AuthProvider = ({ children }) => {
     const loginUser = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    //  login with google 
+    const loginWithGoogle = () => {
+        setLoading(true)
+        return signInWithPopup(auth, googleProvider)
     }
     // forget password
     const forgetPassword = (email) => {
@@ -55,6 +62,7 @@ const AuthProvider = ({ children }) => {
         user,
         createUser,
         loginUser,
+        loginWithGoogle,
         updateUser,
         forgetPassword,
         logOut,

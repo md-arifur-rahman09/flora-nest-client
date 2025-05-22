@@ -1,13 +1,15 @@
 import React, { use } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
-
   const { user, logOut, toogleTheme, dark } = use(AuthContext);
   const navigate = useNavigate()
+  const location = useLocation();
   // console.log(user);
+  const isHomePage = location.pathname === "/";
+
 
   const links = <>
     <li><NavLink to='/'>Home</NavLink></li>
@@ -38,7 +40,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className={dark ? "navbar bg-gray-700 shadow-sm " : "navbar bg-base-100 shadow-sm "}>
+    <div className={dark ? "navbar bg-gray-700 shadow-sm text-white " : "navbar bg-base-100 shadow-sm "}>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -51,7 +53,7 @@ const Navbar = () => {
 
           </ul>
         </div>
-        <Link className='btn bg-white border-0  text-xl' to='/'> <button>🌿 Flora Nest</button></Link>
+        <Link className='btn text-green-950 bg-white border-0  text-2xl font-bold' to='/'> <button>🌿 Flora Nest</button></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -60,12 +62,13 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <button onClick={toogleTheme} className='btn'>
+        {isHomePage && <button onClick={toogleTheme} className={`btn ${dark ? "bg-white " : "bg-gray-700 text-white"}`}>
           {dark ? " 🌞Light mode" : "🌙 Dark Mode"}
-        </button>
+        </button>}
+        
         {user ?
           <> <div className="avatar" title={`${user.displayName} - ${user.email}`}>
-            <div className="w-10 rounded mr-5">
+            <div className="w-10 rounded mx-3">
               <img src={user.photoURL} alt="User Avatar" />
             </div>
           </div>

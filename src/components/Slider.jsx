@@ -1,13 +1,16 @@
 import React from 'react';
+import { AuthContext } from '../context/AuthContext';
 
-const Slider = () => {
+const Slider = () => { 
+
+
     return (
-       <div className="carousel w-full">
+       <div className={`carousel w-full`}>
   {[
-    "https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp",
-    "https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp",
-    "https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp",
-    "https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp",
+    "https://cdn.pixabay.com/photo/2017/03/27/12/50/flower-2178507_960_720.jpg",
+    "https://cdn.pixabay.com/photo/2016/05/15/15/12/hepatica-1393813_1280.jpg",
+    "https://cdn.pixabay.com/photo/2025/04/21/14/54/daisies-9547672_1280.jpg",
+    "https://cdn.pixabay.com/photo/2020/05/27/22/18/meadow-5229169_960_720.jpg",
   ].map((src, index, arr) => (
     <div
       key={index}

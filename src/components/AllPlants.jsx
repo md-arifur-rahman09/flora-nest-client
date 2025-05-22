@@ -1,8 +1,10 @@
-import React from 'react';
+import React  from 'react';
 import { Link, useLoaderData, useLocation } from 'react-router';
+// import { AuthContext } from '../context/AuthContext';
 
 
 const AllPlants = () => {
+    
     const trees = useLoaderData();
     // console.log(trees);
     const location=useLocation();
@@ -10,12 +12,12 @@ const AllPlants = () => {
 
    
     return (
-
-        <div className="overflow-x-auto">
+// className={dark ? "bg-gray-700 text-white" : "bg-white text-black"}
+        <div className="overflow-x-auto ">
             <table className="table">
                 {/* head */}
                 <thead>
-                    <tr>
+                    <tr >
                         <th>
                             No
                         </th>
@@ -65,7 +67,9 @@ const AllPlants = () => {
                                 {tree.notes}
                             </td>
                             <td>
-                                {tree.email}
+                                Name : {tree.name}
+                                <br />
+                               Email: {tree.email}
                             </td>
 
 
