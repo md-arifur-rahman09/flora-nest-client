@@ -1,6 +1,7 @@
 import React, { use, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
   const { createUser, updateUser, loginWithGoogle } = use(AuthContext);
@@ -26,6 +27,13 @@ const SignUp = () => {
     createUser(email, password)
       .then(result => {
         console.log(result.user);
+       Swal.fire({
+                 position: "top-end",
+                 icon: "success",
+                 title: "You are successfully register in Flora Nest",
+                 showConfirmButton: false,
+                 timer: 2500
+               });
         navigate('/')
         updateUser(profile)
           .then(() => { })
@@ -42,6 +50,13 @@ const SignUp = () => {
     loginWithGoogle()
       .then(result => {
         console.log(result.user);
+       Swal.fire({
+                 position: "top-end",
+                 icon: "success",
+                 title: "You are successfully logged in with Google",
+                 showConfirmButton: false,
+                 timer: 2000
+               });
         navigate("/")
       })
       .catch(error => {
