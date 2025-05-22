@@ -17,7 +17,7 @@ const AddPlants = () => {
 
 
 
-    fetch('http://localhost:5000/trees', {
+    fetch('http://localhost:5000/plants', {
       method: "POST",
       headers: {
         "content-type": "application/json"

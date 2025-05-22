@@ -13,7 +13,7 @@ const UpdatePlants = () => {
         const updatedTreeData = Object.fromEntries(formData.entries());
         console.log(updatedTreeData);
         // update data from mongodb
-        fetch(`http://localhost:5000/trees/${treeDetails._id}`, {
+        fetch(`http://localhost:5000/plants/${treeDetails._id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"
