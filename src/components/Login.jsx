@@ -1,12 +1,15 @@
 import React, { use, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const Login = () => {
   const { loginUser, forgetPassword } = use(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const emailRef = useRef();
+  const location=useLocation();
+  // console.log(location)
+
 
 
   const handleSubmit = e => {
@@ -24,7 +27,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate("/")
+        navigate(location.state || "/")
       })
       .catch(error => {
         console.log(error.message)

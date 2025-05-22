@@ -47,13 +47,13 @@ const AddPlants = () => {
 
     <div className="card bg-base-100 w-full  mt-6 max-w-2xl mx-auto shrink-0 shadow-2xl">
       <div className="card-body">
-        <h1 className="text-5xl font-bold mb-10 text-center text-gray-700">Add new Flower Tree</h1>
+        <h1 className="text-5xl font-bold mb-10 text-center text-gray-700">Add new Flower Plant</h1>
         <form onSubmit={handleSubmit} className="fieldset text-sm ">
 
           <div className='grid grid-cols-2 gap-6' >
             <div>
               <label className="label">Plant Name</label>
-              <input type="text" className="input" placeholder="Plant Name" name='plantName' />
+              <input type="text" className="input" placeholder="Plant Name" name='plantName' required />
             </div>
 
 
@@ -61,56 +61,56 @@ const AddPlants = () => {
 
             <div>
               <label className="label">Species / Type</label>
-              <input type="text" className="input" placeholder="Species / Type" name='species' />
+              <input type="text" className="input" placeholder="Species / Type" name='species' required />
             </div>
 
             <div>
               <label className="label">Date Added / Planted</label>
-              <input type="text" className="input" placeholder="Date Added / Planted" name='date' />
+              <input type="text" className="input" placeholder="Date Added / Planted" name='date' required />
             </div>
 
             <div>
               <label className="label">Watering Frequency / Day</label>
-              <input type="text" className="input" placeholder="Watering Frequency" name='water' />
+              <input type="text" className="input" placeholder="Watering Frequency" name='water' required />
             </div>
 
             <div>
               <label className="label">Sunlight Requirement / Day</label>
-              <input type="text" className="input" placeholder="Sunlight Requirement" name='sunlight' />
+              <input type="text" className="input" placeholder="Sunlight Requirement" name='sunlight'  required/>
             </div>
 
             <div>
               <label className="label">Soil Type</label>
-              <input type="text" className="input" placeholder="Soil Type" name='soil' />
+              <input type="text" className="input" placeholder="Soil Type" name='soil' required />
             </div>
 
             <div className='col-span-2'>
 
               <label className="label">Notes / Special Instructions</label>
-              <input type="text" className="input w-full" placeholder="Notes / Special Instructions" name='notes' />
+              <input type="text" className="input w-full" placeholder="Notes / Special Instructions" name='notes'  required/>
             </div>
 
 
             <div className='col-span-2'>
               <label className="label ">Upload PhotoURL</label>
               <br />
-              <input type="text" className="input w-full" placeholder="Upload PhotoURL" name='photo' />
+              <input type="text" className="input w-full" placeholder="Upload PhotoURL" name='photo' required />
             </div>
 
             <div className='col-span-1'>
               <label className="label ">User Email</label>
               <br />
-              <input type="email" className="input " placeholder="Email" name='email' defaultValue={user.email}/>
+              <input type="email" className="input " placeholder="Email" name='email' defaultValue={user.email} required/>
             </div>
 
             <div className='col-span-1'>
               <label className="label ">Name</label>
               <br />
-              <input type="text" className="input w-full" placeholder="Name" name='name' defaultValue={user.displayName} />
+              <input type="text" className="input w-full" placeholder="Name" name='name' defaultValue={user.displayName} required />
             </div>
 
           </div>
-          <button className="btn bg-blue-500 text-white w-full mt-4">Add tree</button>
+          <button className="btn bg-blue-500 text-white w-full mt-4">Add plant</button>
         </form>
       </div>
     </div>

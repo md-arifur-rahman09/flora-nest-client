@@ -15,13 +15,21 @@ import Error from './components/Error.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
 import PrivateRouter from './routes/PrivateRouter.jsx'
 import PlantDetails from './components/PlantDetails.jsx'
+import UpdatePlants from './components/UpdatePlants.jsx'
+import About from './components/About.jsx'
+import Contact from './components/Contact.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
     children: [
-      { index: true, Component: Home },
+      {
+         index: true,
+          Component: Home,
+          loader: ()=> fetch('http://localhost:5000/trees')
+        
+        },
       {
         path: '/allplants',
         Component: AllPlants,
@@ -42,12 +50,25 @@ const router = createBrowserRouter([
         loader:()=> fetch("http://localhost:5000/trees")
       },
       {
+        path:'/update/:id',
+        Component: UpdatePlants,
+        loader: ({params})=>fetch(`http://localhost:5000/trees/${params.id}`)
+      },
+      {
         path: '/register',
         Component: Register
       },
       {
         path: '/login',
         Component: Login
+      },
+      {
+        path:'about',
+        Component:About
+      },
+      {
+        path:'contact',
+        Component:Contact
       }
     ]
   },

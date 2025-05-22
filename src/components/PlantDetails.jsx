@@ -1,31 +1,50 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 
 const PlantDetails = () => {
     const treeDetails = useLoaderData();
- 
-    const {photo,plantName,notes, soil,species,sunlight,water,email}=treeDetails;
+    const navigate=useNavigate();
+    const { photo, plantName, notes, soil, species, sunlight, water, email } = treeDetails;
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col lg:flex-row">
-                <img
-                    src={photo}
-                    className="max-w-sm rounded-lg shadow-2xl"
-                />
-                <div>
-                    <h1 className="text-5xl font-bold">{plantName}</h1>
-                    <p className='mt-1'>{species}</p>
-                    <p className="py-6">
-                       {notes}
-                    </p>
-                    <p><span className='font-semibold text-md'>Soil required : </span>{soil}</p>
-                    <p><span className='font-semibold text-md'> Sunlight needed : </span>min {sunlight}/Day</p>
-                    <p><span className='font-semibold text-md'> Water needed </span>min {water}/Day</p>
+        <div className="min-h-screen bg-gradient-to-r from-green-100 to-green-200 flex items-center justify-center py-10 px-4">
+            <div className="bg-white bg-opacity-70 backdrop-blur-md shadow-2xl rounded-3xl overflow-hidden max-w-5xl w-full flex flex-col lg:flex-row p-6 lg:p-10 gap-8">
+                <div className="flex-shrink-0 w-full lg:w-1/2">
+                    <img
+                        src={photo}
+                        alt={plantName}
+                        className="rounded-2xl w-full h-[400px] object-cover shadow-lg"
+                    />
+                </div>
+                <div className="flex-grow w-full lg:w-1/2">
+                    <h1 className="text-4xl lg:text-5xl font-bold text-green-700 mb-2">{plantName}</h1>
+                    <p className="text-lg font-medium text-gray-600 mb-4">{species}</p>
+                    <p className="text-gray-700 mb-4">{notes}</p>
 
-                    <br />
-                    <p>Add From <span className='text-md font-medium'> {email}</span></p>
-                   <Link to='/allplants'>  <button className="btn btn-primary  mt-3">Go Back</button></Link>
+                    <div className="space-y-2 text-gray-800">
+                        <p>
+                            <span className="font-semibold">🌱 Soil Type:</span> {soil}
+                        </p>
+                        <p>
+                            <span className="font-semibold">☀️ Sunlight:</span> {sunlight} hrs/day
+                        </p>
+                        <p>
+                            <span className="font-semibold">💧 Water:</span> {water} ml/day
+                        </p>
+                    </div>
+
+                    <div className="mt-6 text-sm text-gray-600">
+                        <p>Added by: <span className="font-semibold text-green-800">{email}</span></p>
+                    </div>
+
+                    <div className="mt-6">
+                        <button
+                            onClick={()=>navigate(-1)}
+                            className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+                        >
+                            ⬅ Back
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

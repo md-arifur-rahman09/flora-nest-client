@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router';
+import { Link, useLoaderData, useLocation } from 'react-router';
 
 
 const AllPlants = () => {
     const trees = useLoaderData();
     // console.log(trees);
+    const location=useLocation();
+    console.log(location)
+
    
     return (
 
@@ -20,6 +23,7 @@ const AllPlants = () => {
                         <th>Species</th>
                         <th>Detail</th>
                         <th>Notes</th>
+                        <th>Added By</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -60,10 +64,13 @@ const AllPlants = () => {
                             <td>
                                 {tree.notes}
                             </td>
+                            <td>
+                                {tree.email}
+                            </td>
 
 
                             <th>
-                                <Link to={`/plantDetails/${tree._id}`}><button  className="btn btn-ghost btn-xs bg-blue-300">Details</button></Link>
+                                <Link state={location.pathname}  to={`/plantDetails/${tree._id}`}><button  className="btn btn-ghost btn-xs bg-blue-300">Details</button></Link>
                             </th>
                         </tr>)
                     }

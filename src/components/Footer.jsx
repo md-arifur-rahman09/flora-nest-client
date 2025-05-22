@@ -11,7 +11,7 @@ const Footer = () => {
 
           {/* Company Info */}
           <div>
-            <h2 className="text-lg font-semibold">YourCompany</h2>
+            <h2 className="text-lg font-semibold">Flora Nest</h2>
             <p className="text-sm mt-2">&copy; {new Date().getFullYear()} All rights reserved.</p>
           </div>
 

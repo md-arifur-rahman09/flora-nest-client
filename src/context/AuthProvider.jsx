@@ -5,7 +5,12 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEm
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true)
+    const [dark, setDark] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    // dark light mode toogle
+    const toogleTheme = () => setDark(!dark);
+
     // create user
     const createUser = (email, password) => {
         setLoading(true)
@@ -45,7 +50,7 @@ const AuthProvider = ({ children }) => {
             unsubscribe()
         }
     }, []);
-    
+
     const userInfo = {
         user,
         createUser,
@@ -53,6 +58,7 @@ const AuthProvider = ({ children }) => {
         updateUser,
         forgetPassword,
         logOut,
+        toogleTheme, dark, setDark,
 
         loading
     }

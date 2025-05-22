@@ -4,19 +4,21 @@ import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
-  const { user, logOut } = use(AuthContext);
+
+  const { user, logOut, toogleTheme, dark } = use(AuthContext);
   const navigate = useNavigate()
-  console.log(user);
+  // console.log(user);
 
   const links = <>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/allplants'>All Plants</NavLink></li>
     {user && <>  <li><NavLink to='/addplants'>Add Plants</NavLink></li>
-    <li><NavLink to='/myplants'>My Plants</NavLink></li>
+      <li><NavLink to='/myplants'>My Plants</NavLink></li>
     </>}
-   
+
 
   </>
+
 
   // logout 
   const handleLogout = () => {
@@ -36,7 +38,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className={dark ? "navbar bg-gray-700 shadow-sm " : "navbar bg-base-100 shadow-sm "}>
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -49,7 +51,7 @@ const Navbar = () => {
 
           </ul>
         </div>
-        <Link className='btn bg-white border-0  text-xl'   to='/'> <button>🌿 Flora Nest</button></Link>
+        <Link className='btn bg-white border-0  text-xl' to='/'> <button>🌿 Flora Nest</button></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -58,17 +60,20 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+        <button onClick={toogleTheme} className='btn'>
+          {dark ? " 🌞Light mode" : "🌙 Dark Mode"}
+        </button>
         {user ?
           <> <div className="avatar" title={`${user.displayName} - ${user.email}`}>
             <div className="w-10 rounded mr-5">
               <img src={user.photoURL} alt="User Avatar" />
             </div>
           </div>
-          <button onClick={handleLogout} className='btn'><a >Logout</a></button> </>
+            <button onClick={handleLogout} className='btn'><a >Logout</a></button> </>
           : <>
-           <Link className='btn' to='/login'>Login</Link>
-          <Link  to='/register'><button className='btn ml-5 bg-blue-500 text-white'>Register</button></Link>
-           </>}
+            <Link className='btn' to='/login'>Login</Link>
+            <Link to='/register'><button className='btn ml-5 bg-blue-500 text-white'>Register</button></Link>
+          </>}
       </div>
     </div>
   );
