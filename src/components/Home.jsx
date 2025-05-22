@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import Slider from './Slider';
+// import { format } from 'date-fns';
 
 const Home = () => {
     const { dark } = use(AuthContext);
