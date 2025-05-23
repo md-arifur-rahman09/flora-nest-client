@@ -27,8 +27,8 @@ const Home = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {plants?.slice(0, 6)?.map(plant => (
                         <div key={plant.id} className="card shadow-lg p-4 bg-base-100">
-                            <img src={plant.photo} alt={plant.displayName} className="h-64 w-full object-cover rounded" />
-                            <h3 className="text-xl font-bold mt-2">{plant.displayName}</h3>
+                            <img src={plant.photo}  className="h-64 w-full object-cover rounded" />
+                            <h3 className="text-xl font-bold my-2">{plant.plantName}</h3>
                             <div className="space-y-2 text-gray-800">
                                 <p>
                                     <span className="font-semibold">🌱 Soil Type:</span> {plant.soil}
@@ -39,7 +39,7 @@ const Home = () => {
                                 <p>
                                     <span className="font-semibold">💧 Water:</span> {plant.water} ml/day
                                 </p>
-                                <p className="text-sm mb-2"> 📝 {plant.notes}</p>
+                                <p className="text-xs mb-2  text-gray-400"> 📝 {plant.notes}</p>
                             </div>
                             <Link to={`/plantDetails/${plant._id}`}>
                                 <button className="btn btn-sm bg-green-500 text-white">View Details</button>
