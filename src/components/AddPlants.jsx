@@ -36,6 +36,7 @@ const AddPlants = () => {
             showConfirmButton: false,
             timer: 3000
           });
+          form.reset();
         }
 
       })
