@@ -18,8 +18,8 @@ const Login = () => {
     const password = e.target.password.value;
     // login user
     loginUser(email, password)
-      .then(result => {
-        console.log(result.user);
+      .then((result) => {
+        // console.log(result.user);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -30,7 +30,7 @@ const Login = () => {
         navigate(location?.state || "/")
       })
       .catch(error => {
-        console.log(error.message)
+        // console.log(error.message)
       })
 
   }
@@ -46,14 +46,14 @@ const Login = () => {
         Swal.fire("Password reset email sent.");
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   }
 
   const handleGoogle = () => {
     loginWithGoogle()
       .then(result => {
-        console.log(result.user);
+        // console.log(result.user);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -63,7 +63,9 @@ const Login = () => {
         });
         navigate("/")
       })
-      .catch(error => console.log(error.message))
+      .catch(error => {
+        // console.log(error.message)
+      })
   }
   return (
 

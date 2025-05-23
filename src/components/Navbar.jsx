@@ -36,7 +36,7 @@ const Navbar = () => {
         });
         navigate("/login")
       }).catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
   return (
@@ -53,7 +53,7 @@ const Navbar = () => {
 
           </ul>
         </div>
-        <Link className='btn text-green-950 bg-white border-0  text-2xl font-bold' to='/'> <button>🌿 Flora Nest</button></Link>
+        <Link className='btn text-green-950 bg-white border-0 text-lg  md:text-2xl font-bold' to='/'> <button>🌿 Flora Nest</button></Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -62,12 +62,12 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        {isHomePage && <button onClick={toogleTheme} className={`btn ${dark ? "bg-white " : "bg-gray-700 text-white"}`}>
-          {dark ? " 🌞Light mode" : "🌙 Dark Mode"}
+        {isHomePage && <button onClick={toogleTheme} className={`btn m-0 px-1 ${dark ? "bg-white " : "bg-gray-700 text-white"}`}>
+          {dark ? " 🌞" : "🌙"}
         </button>}
         
         {user ?
-          <> <div className="avatar" title={`${user.displayName} - ${user.email}`}>
+          <> <div className="avatar " title={`${user.displayName} - ${user.email}`}>
             <div className="w-10 rounded mx-3">
               <img src={user.photoURL} alt="User Avatar" />
             </div>

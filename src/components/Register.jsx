@@ -26,7 +26,7 @@ const SignUp = () => {
 
     createUser(email, password)
       .then(result => {
-        console.log(result.user);
+        // console.log(result.user);
        Swal.fire({
                  position: "top-end",
                  icon: "success",
@@ -40,7 +40,7 @@ const SignUp = () => {
           .catch(error => console.log(error.message))
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
         setError(error.message)
       })
   }
@@ -49,7 +49,7 @@ const SignUp = () => {
   const handleGoogle = () => {
     loginWithGoogle()
       .then(result => {
-        console.log(result.user);
+        // console.log(result.user);
        Swal.fire({
                  position: "top-end",
                  icon: "success",
@@ -60,7 +60,7 @@ const SignUp = () => {
         navigate("/")
       })
       .catch(error => {
-        console.log(error.message)
+        // console.log(error.message)
       })
 
   }

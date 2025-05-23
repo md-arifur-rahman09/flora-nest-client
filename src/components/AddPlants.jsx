@@ -11,13 +11,13 @@ const AddPlants = () => {
     const form = e.target;
     const fromData = new FormData(form);
     const treeData = Object.fromEntries(fromData.entries());
-    console.log(treeData);
+    // console.log(treeData);
 
 
 
 
 
-    fetch('http://localhost:5000/plants', {
+    fetch('https://flora-nest-server.vercel.app/plants', {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -27,7 +27,7 @@ const AddPlants = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("data after post", data);
+        // console.log("data after post", data);
         if (data.insertedId) {
           Swal.fire({
 
@@ -104,13 +104,13 @@ const AddPlants = () => {
             <div className='col-span-1'>
               <label className="label ">User Email</label>
               <br />
-              <input type="email" className="input " placeholder="Email" name='email' defaultValue={user.email} required disabled />
+              <input type="email" className="input " placeholder="Email" name='email' defaultValue={user.email} required />
             </div>
 
             <div className='col-span-1'>
               <label className="label ">Name</label>
               <br />
-              <input type="text" className="input w-full" placeholder="Name" name='name' defaultValue={user.displayName} required disabled />
+              <input type="text" className="input w-full" placeholder="Name" name='name' defaultValue={user.displayName} required  />
             </div>
 
           </div>

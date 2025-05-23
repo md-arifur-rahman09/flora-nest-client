@@ -4,16 +4,16 @@ import Swal from 'sweetalert2';
 
 const UpdatePlants = () => {
     const treeDetails = useLoaderData();
-    console.log(treeDetails);
+    // console.log(treeDetails);
 
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const updatedTreeData = Object.fromEntries(formData.entries());
-        console.log(updatedTreeData);
+        // console.log(updatedTreeData);
         // update data from mongodb
-        fetch(`http://localhost:5000/plants/${treeDetails._id}`, {
+        fetch(`https://flora-nest-server.vercel.app/plants/${treeDetails._id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

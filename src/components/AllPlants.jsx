@@ -8,7 +8,7 @@ const AllPlants = () => {
     const trees = useLoaderData();
     // console.log(trees);
     const location=useLocation();
-    console.log(location)
+    // console.log(location);
 
    
     return (
@@ -33,7 +33,7 @@ const AllPlants = () => {
                     {/* row 1 */}
 
                     {
-                        trees.map((tree,index) => <tr key={tree._id}>
+                        trees?.map((tree,index) => <tr key={tree._id}>
                             <th>
                                 <label>
                                     {index+1}
@@ -67,9 +67,9 @@ const AllPlants = () => {
                                 {tree.notes}
                             </td>
                             <td>
-                                Name : {tree.name}
+                                Name : {tree?.name}
                                 <br />
-                               Email: {tree.email}
+                               Email: {tree?.email}
                             </td>
 
 

@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 const Contact = () => {
     const {user}=use(AuthContext);
-    console.log(user)
+    // console.log(user);
 
     const handleSubmit = (e) => {
   e.preventDefault();

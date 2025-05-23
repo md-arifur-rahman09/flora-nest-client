@@ -27,18 +27,18 @@ const router = createBrowserRouter([
       {
          index: true,
           Component: Home,
-          loader: ()=> fetch('http://localhost:5000/plants')
+          loader: ()=> fetch('https://flora-nest-server.vercel.app/plants')
         
         },
       {
         path: '/allplants',
         Component: AllPlants,
-        loader:()=> fetch("http://localhost:5000/plants")
+        loader:()=> fetch("https://flora-nest-server.vercel.app/plants")
       },
       {
         path: "/plantDetails/:id",
         element: <PrivateRouter><PlantDetails></PlantDetails></PrivateRouter>,
-        loader: ({params})=> fetch(`http://localhost:5000/plants/${params.id}`)
+        loader: ({params})=> fetch(`https://flora-nest-server.vercel.app/plants/${params.id}`)
       },
       {
         path: '/addplants',
@@ -47,12 +47,12 @@ const router = createBrowserRouter([
       {
         path: '/myplants',
         element: <PrivateRouter><MyPlants></MyPlants></PrivateRouter>,
-        loader:()=> fetch("http://localhost:5000/plants")
+        loader:()=> fetch("https://flora-nest-server.vercel.app/plants")
       },
       {
         path:'/update/:id',
         Component: UpdatePlants,
-        loader: ({params})=>fetch(`http://localhost:5000/plants/${params.id}`)
+        loader: ({params})=>fetch(`https://flora-nest-server.vercel.app/plants/${params.id}`)
       },
       {
         path: '/register',
