@@ -28,5 +28,8 @@ Welcome to the **Flora Nest Client** — a frontend web application built using 
 
 ## 📸 Screenshots
 
-> You can add screenshots here in future:
+### 🏡 Home Page
+![Home Page](src/assets/screenshots/home.png)
+### 📅 Booking Page
+![Booking Page](src/assets/screenshots/booking.png)
 
