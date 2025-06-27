@@ -5,7 +5,7 @@ const Slider = () => {
 
 
     return (
-       <div className={`carousel w-full`}>
+    <div className="carousel w-full max-h-[70vh]">
   {[
     "https://cdn.pixabay.com/photo/2017/03/27/12/50/flower-2178507_960_720.jpg",
     "https://cdn.pixabay.com/photo/2016/05/15/15/12/hepatica-1393813_1280.jpg",

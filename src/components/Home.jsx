@@ -1,86 +1,104 @@
-import React, { use } from 'react';
+import React from 'react';
 import { Link, useLoaderData } from 'react-router';
-import { AuthContext } from '../context/AuthContext';
 import Slider from './Slider';
-// import { format } from 'date-fns';
+import GardeningTips from './GardeningTips';
+import CarePlants from './CarePlants';
+import PlantsCareMistakes from './PlantsCareMistakes';
 
 const Home = () => {
-    const { dark } = use(AuthContext);
     const plants = useLoaderData();
-
-
-
-
-
+    console.log(plants)
 
     return (
-        <div className={dark ? "bg-gray-700 text-white" : "bg-white text-black"} >
-
-
-
+        <div className="bg-white text-black">
             {/* Banner / Slider */}
-            <Slider></Slider>
+            <Slider />
 
             {/* New Plants */}
-            <section className="py-8 px-4">
-                <h2 className={`text-3xl  font-bold text-center mb-6${dark? "text-white":"text-green-950"}`}>🌿 New Plants</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {plants?.slice(0, 6)?.map(plant => (
-                        <div key={plant.id} className="card shadow-lg p-4 bg-base-100">
-                            <img src={plant.photo}  className="h-64 w-full object-cover rounded" />
-                            <h3 className="text-xl font-bold my-2">{plant.plantName}</h3>
-                            <div className="space-y-2 text-gray-800">
-                                <p>
-                                    <span className="font-semibold">🌱 Soil Type:</span> {plant.soil}
+            {/* <section className="py-10 px-8 md:px-16 lg:px-20">
+                <h2 className="text-3xl font-bold text-center mb-8 text-green-950">🌿 New Plants</h2>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    {plants?.slice(0, 9)?.map(plant => (
+                        <div
+                            key={plant._id}
+                            className="card bg-base-100 shadow-lg rounded-lg flex flex-col justify-between min-h-[430px]"
+                        >
+                            <img
+                                src={plant.photo}
+                                alt={plant.plantName}
+                                className="h-52 w-full object-cover rounded-t-lg"
+                            />
+                            <div className="p-4 flex flex-col justify-between flex-grow">
+                                <h3 className="text-xl font-bold mb-2">{plant.plantName}</h3>
+                                <p className="text-sm text-gray-600 mb-4">
+                                    📝 {plant.notes?.slice(0, 80)}...
                                 </p>
-                                <p>
-                                    <span className="font-semibold">☀️ Sunlight:</span> {plant.sunlight} hrs/day
-                                </p>
-                                <p>
-                                    <span className="font-semibold">💧 Water:</span> {plant.water} ml/day
-                                </p>
-                                <p className="text-xs mb-2  text-gray-400"> 📝 {plant.notes}</p>
+                                <p> Species : {plant.species}</p>
+                                <p> Water needed : {plant.water}</p>
+                                <p> sunlight needed : {plant.sunlight}</p>
+                                <Link to={`/plantDetails/${plant._id}`}>
+                                    <button className="btn btn-sm bg-green-600 text-white w-full">See More</button>
+                                </Link>
                             </div>
-                            <Link to={`/plantDetails/${plant._id}`}>
-                                <button className="btn btn-sm bg-green-500 text-white">View Details</button>
-                            </Link>
+                        </div>
+                    ))}
+                </div>
+            </section> */}
+            <section className="py-10 px-8 md:px-16 lg:px-20">
+                <h2 className="text-3xl font-bold text-center mb-8 text-green-900">🌿 New Plants</h2>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    {plants?.slice(0, 9)?.map(plant => (
+                        <div
+                            key={plant._id}
+                            className="card bg-base-100 shadow-lg rounded-lg flex flex-col justify-between min-h-[470px]"
+                        >
+                            <img
+                                src={plant.photo}
+                                alt={plant.plantName}
+                                className="h-52 w-full object-cover rounded-t-lg"
+                            />
+                            <div className="p-4 flex flex-col justify-between flex-grow">
+                                <h3 className="text-2xl font-bold mb-2 text-green-700">{plant.plantName}</h3>
+
+                                <p className="text-sm text-gray-600 mb-3">
+                                    📝 {plant.notes?.slice(0, 80)}...
+                                </p>
+
+                                <div className="text-sm text-gray-700 space-y-1 mb-4">
+                                    <p><span className="font-semibold">🌱 Species:</span> <span className="capitalize">{plant.species}</span></p>
+                                    <p><span className="font-semibold">💧 Water Needed:</span> {plant.water} ml/day</p>
+                                    <p><span className="font-semibold">☀️ Sunlight:</span> {plant.sunlight} hrs/day</p>
+                                </div>
+
+                                <Link to={`/plantDetails/${plant._id}`}>
+                                    <button className="btn btn-md bg-green-600 text-white w-full mt-auto">
+                                        See More
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     ))}
                 </div>
             </section>
-            {/* Section 1: Common Plant Care Pitfalls */}
-            <section className="py-10 px-4 bg-green-50 dark:bg-green-900">
-                <h2 className="text-3xl font-bold text-center mb-6">🚫 Avoid These Plant Care Mistakes</h2>
-                <ul className="list-disc list-inside max-w-xl mx-auto space-y-3 text-lg text-green-700 dark:text-green-200">
-                    <li>Watering too much or too little—balance is key!</li>
-                    <li>Not enough sunlight—each plant has unique needs.</li>
-                    <li>Using incompatible soil that hinders growth.</li>
-                    <li>Neglecting pest control—little critters can wreak havoc.</li>
-                </ul>
-            </section>
-            {/* Section: Flourishing Flower Plants for Your Garden */}
-            <section className="py-10 px-4">
-                <h2 className="text-3xl font-bold text-center mb-6">🌸 Easy-Care Flowering Plants</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
-                    {[
-                        { name: "Rose", description: "Classic beauty with stunning blooms, easy to maintain." },
-                        { name: "Jasmine", description: "Fragrant blossoms that thrive with minimal care." },
-                        { name: "Marigold", description: "Bright and cheerful flowers, great for any garden." },
-                        { name: "Hibiscus", description: "Tropical charm with large, eye-catching blooms." },
-                        { name: "Lavender", description: "Aromatic, calming, and resilient in various climates." }
-                    ].map((flower, index) => (
-                        <div key={index} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md w-72 text-center">
-                            <h3 className="font-semibold text-xl">{flower.name}</h3>
-                            <p className="mt-2 text-gray-600 dark:text-gray-300">{flower.description}</p>
-                        </div>
-                    ))}
-                </div>
+
+
+
+            {/* Section 1: Plant Care Tips */}
+            <section className="py-10 px-8 md:px-16 lg:px-20 bg-green-50">
+                <PlantsCareMistakes></PlantsCareMistakes>
             </section>
 
+            {/* Flower Plants */}
+            <section className="py-10 px-8 md:px-16 lg:px-20 bg-green-100 border-green-300">
+                <CarePlants></CarePlants>
+            </section>
 
-
-
-
+            {/* gardening tips */}
+            < section className="py-10 px-8 md:px-16 lg:px-20 bg-green-50" >
+                <GardeningTips></GardeningTips>
+            </section>
         </div>
     );
 };

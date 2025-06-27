@@ -4,29 +4,13 @@ import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
-  const { user, logOut, toogleTheme, dark } = use(AuthContext);
-  const navigate = useNavigate()
+  const { user, logOut } = use(AuthContext);
+  const navigate = useNavigate();
   const location = useLocation();
-  // console.log(user);
-  const isHomePage = location.pathname === "/";
 
-
-  const links = <>
-    <li><NavLink to='/'>Home</NavLink></li>
-    <li><NavLink to='/allplants'>All Plants</NavLink></li>
-    {user && <>  <li><NavLink to='/addplants'>Add Plants</NavLink></li>
-      <li><NavLink to='/myplants'>My Plants</NavLink></li>
-    </>}
-
-
-  </>
-
-
-  // logout 
   const handleLogout = () => {
     logOut()
       .then(() => {
-        // Sign-out successful.
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -34,49 +18,75 @@ const Navbar = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        navigate("/login")
-      }).catch((error) => {
-        // console.log(error.message);
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.error(error.message);
       });
   };
-  return (
-    <div className={dark ? "navbar bg-gray-700 shadow-sm text-white " : "navbar bg-base-100 shadow-sm "}>
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            {links}
 
+  const navLinks = <>
+    <li><NavLink to='/'>Home</NavLink></li>
+
+    <li><NavLink to='/allplants'>All Plants</NavLink></li>
+
+
+    {user && <>
+      <li><NavLink to='/addplants'>Add Plants</NavLink></li>
+      <li><NavLink to='/myplants'>My Plants</NavLink></li>
+    </>}
+    <li><NavLink to='/about'>About Us</NavLink></li>
+  </>;
+
+  return (
+    <div className="sticky top-0 z-50 bg-green-100 shadow-sm ">
+      <div className="max-w-screen-xl mx-auto px-4 navbar flex flex-wrap justify-between items-center">
+        {/* Logo and Dropdown */}
+        <div className="flex items-center gap-2">
+          {/* Mobile Dropdown */}
+          <div className="dropdown lg:hidden">
+            <button tabIndex={0} className="btn btn-ghost">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
+            </button>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              {navLinks}
+            </ul>
+          </div>
+          {/* Logo */}
+          <Link to='/' className="text-green-900 font-bold text-xl md:text-2xl whitespace-nowrap">
+            🌿 Flora Nest
+          </Link>
+        </div>
+
+        {/* Center Nav */}
+        <div className="hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">
+            {navLinks}
           </ul>
         </div>
-        <Link className='btn text-green-950 bg-white border-0 text-lg  md:text-2xl font-bold' to='/'> <button>🌿 Flora Nest</button></Link>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links}
 
-        </ul>
-      </div>
-      <div className="navbar-end">
-        {isHomePage && <button onClick={toogleTheme} className={`btn m-0 px-1 ${dark ? "bg-white " : "bg-gray-700 text-white"}`}>
-          {dark ? " 🌞" : "🌙"}
-        </button>}
-        
-        {user ?
-          <> <div className="avatar " title={`${user.displayName} - ${user.email}`}>
-            <div className="w-10 rounded mx-3">
-              <img src={user.photoURL} alt="User Avatar" />
-            </div>
-          </div>
-            <button onClick={handleLogout} className='btn'><a >Logout</a></button> </>
-          : <>
-            <Link className='btn' to='/login'>Login</Link>
-            <Link to='/register'><button className='btn ml-5 bg-blue-500 text-white'>Register</button></Link>
-          </>}
+        {/* Right Side Buttons */}
+        <div className="flex items-center gap-3 mt-2 lg:mt-0">
+          {user ? (
+            <>
+              <div className="avatar tooltip" title={`${user.displayName} - ${user.email}`}>
+                <div className="w-10 rounded-full">
+                  <img src={user.photoURL} alt="User Avatar" />
+                </div>
+              </div>
+              <button onClick={handleLogout} className="btn btn-error text-white btn-sm">Logout</button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn btn-outline btn-sm">Login</Link>
+              <Link to="/register" className="btn btn-primary btn-sm text-white">Register</Link>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
