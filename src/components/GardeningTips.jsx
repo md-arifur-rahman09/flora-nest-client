@@ -11,7 +11,7 @@ const GardeningTips = () => {
             image: "https://cielowigle.com/wp-content/uploads/2021/08/Houseplants.jpg"
         },
         {
-            title: "How to Make a Balcony Garden",
+            title: "Make a Balcony Garden",
             desc: "Even with limited space, your balcony can be a green haven. Here's how!",
             fullContent: "Choose railing planters, hanging pots, and vertical shelves to maximize space. Use herbs, succulents, and flowering plants that grow well in containers. Make sure to assess sunlight exposure and water drainage properly.",
             image: "https://bluestem.ca/wp-content/uploads/2025/02/organized-balcony-garden-setup.jpg"
