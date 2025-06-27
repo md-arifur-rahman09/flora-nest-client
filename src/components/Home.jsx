@@ -7,7 +7,7 @@ import PlantsCareMistakes from './PlantsCareMistakes';
 
 const Home = () => {
     const plants = useLoaderData();
-    console.log(plants)
+    // console.log(plants);
 
     return (
         <div className="bg-white text-black">
@@ -96,7 +96,7 @@ const Home = () => {
             </section>
 
             {/* gardening tips */}
-            < section className="py-10 px-8 md:px-16 lg:px-20 bg-green-50" >
+            < section className="pt-16 pb-24 px-8 md:px-16 lg:px-20 bg-green-50 " >
                 <GardeningTips></GardeningTips>
             </section>
         </div>

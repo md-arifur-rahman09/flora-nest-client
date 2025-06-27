@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Error = () => {
-    return (
-         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-800">
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-gray-800">
       {/* Error Image */}
-      <img 
-        src="https://cdn.pixabay.com/photo/2017/08/30/07/56/error-2694253_1280.png" 
-        alt="404 Not Found" 
+      <img
+        src="https://userway.org/blog/wp-content/uploads/2024/03/The-404-Page_-How-To-Turn-a-404-Error-Into-a-Win-for-Your-Website.jpg"
+        alt="404 Not Found"
         className="w-96 max-w-full mb-6"
       />
 
@@ -20,7 +20,7 @@ const Error = () => {
         Go Back Home
       </Link>
     </div>
-    );
+  );
 };
 
 export default Error;

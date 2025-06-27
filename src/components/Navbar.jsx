@@ -32,8 +32,10 @@ const Navbar = () => {
 
 
     {user && <>
-      <li><NavLink to='/addplants'>Add Plants</NavLink></li>
-      <li><NavLink to='/myplants'>My Plants</NavLink></li>
+      <li><NavLink to='/addPlant'>Add Plants</NavLink></li>
+      <li><NavLink to='/myPlants'>My Plants</NavLink></li>
+      <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+
     </>}
     <li><NavLink to='/about'>About Us</NavLink></li>
   </>;

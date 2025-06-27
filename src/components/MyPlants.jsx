@@ -2,15 +2,15 @@ import React, { use, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
-import {  MdOutlineDelete } from 'react-icons/md';
+import { MdOutlineDelete } from 'react-icons/md';
 
 import { BiMessageDetail } from 'react-icons/bi';
 import { FaRegEdit } from 'react-icons/fa';
 
 const MyPlants = () => {
-    const { user,dark} = use(AuthContext)
+    const { user } = use(AuthContext)
     const initialTrees = useLoaderData();
-const[trees,setTrees]=useState(initialTrees) 
+    const [trees, setTrees] = useState(initialTrees)
 
     // console.log(trees)
     const myTrees = trees?.filter(tree => tree.email == user.email);
@@ -33,14 +33,14 @@ const[trees,setTrees]=useState(initialTrees)
                     .then(res => res.json())
                     .then(data => {
                         // console.log("data after Delete", data);
-                        if(data.deletedCount){
+                        if (data.deletedCount) {
                             Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
-                        });
-                        const remainingTrees= trees?.filter(t=> t._id !== id);
-                        setTrees(remainingTrees)
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            const remainingTrees = trees?.filter(t => t._id !== id);
+                            setTrees(remainingTrees)
                         }
                     })
 
@@ -49,10 +49,11 @@ const[trees,setTrees]=useState(initialTrees)
     }
     return (
         <div className="overflow-x-auto">
+            <h1 className='text-center text-2xl lg:text-4xl font-bold text-green-900'>My posting plants</h1>
             <table className="table">
                 {/* head */}
                 <thead>
-                    <tr className={dark && "text-white"}>
+                    <tr className='text-white'>
                         <th>
                             No
                         </th>
@@ -109,11 +110,11 @@ const[trees,setTrees]=useState(initialTrees)
                             <th>
                                 <div className="join join-vertical space-y-2 ">
 
-                                    <Link to={`/plantDetails/${tree._id}`}><button className="btn  btn-xs  text-sm bg-blue-300"><BiMessageDetail></BiMessageDetail></button></Link>
+                                    <Link to={`/plantDetails/${tree._id}`}><button title='Details' className="btn  btn-xs  text-sm bg-blue-300"><BiMessageDetail></BiMessageDetail></button></Link>
 
-                                    <Link to={`/update/${tree._id}`} ><button className="btn  btn-xs text-sm bg-green-300 "><FaRegEdit/></button></Link>
+                                    <Link to={`/update/${tree._id}`} ><button title='Update' className="btn  btn-xs text-sm bg-green-300 "><FaRegEdit /></button></Link>
 
-                                    <button onClick={() => handleDelete(tree._id)} className="btn bg-red-300   btn-xs text-sm"><MdOutlineDelete /></button>
+                                    <button title='Delete' onClick={() => handleDelete(tree._id)} className="btn bg-red-300   btn-xs text-sm"><MdOutlineDelete /></button>
 
 
                                 </div>

@@ -18,6 +18,7 @@ import PlantDetails from './components/PlantDetails.jsx'
 import UpdatePlants from './components/UpdatePlants.jsx'
 import About from './components/About.jsx'
 import Contact from './components/Contact.jsx'
+import DashboardLayout from './layouts/DashboardLayout.jsx'
 
 const router = createBrowserRouter([
   {
@@ -25,34 +26,34 @@ const router = createBrowserRouter([
     Component: Root,
     children: [
       {
-         index: true,
-          Component: Home,
-          loader: ()=> fetch('https://flora-nest-server.vercel.app/plants')
-        
-        },
+        index: true,
+        Component: Home,
+        loader: () => fetch('https://flora-nest-server.vercel.app/plants')
+
+      },
       {
         path: '/allplants',
         Component: AllPlants,
-        loader:()=> fetch("https://flora-nest-server.vercel.app/plants")
+        loader: () => fetch("https://flora-nest-server.vercel.app/plants")
       },
       {
         path: "/plantDetails/:id",
         element: <PrivateRouter><PlantDetails></PlantDetails></PrivateRouter>,
-        loader: ({params})=> fetch(`https://flora-nest-server.vercel.app/plants/${params.id}`)
+        loader: ({ params }) => fetch(`https://flora-nest-server.vercel.app/plants/${params.id}`)
       },
       {
-        path: '/addplants',
+        path: '/addPlant',
         element: <PrivateRouter><AddPlants></AddPlants></PrivateRouter>
       },
       {
-        path: '/myplants',
+        path: '/myPlants',
         element: <PrivateRouter><MyPlants></MyPlants></PrivateRouter>,
-        loader:()=> fetch("https://flora-nest-server.vercel.app/plants")
+        loader: () => fetch("https://flora-nest-server.vercel.app/plants")
       },
       {
-        path:'/update/:id',
+        path: '/update/:id',
         Component: UpdatePlants,
-        loader: ({params})=>fetch(`https://flora-nest-server.vercel.app/plants/${params.id}`)
+        loader: ({ params }) => fetch(`https://flora-nest-server.vercel.app/plants/${params.id}`)
       },
       {
         path: '/register',
@@ -63,13 +64,38 @@ const router = createBrowserRouter([
         Component: Login
       },
       {
-        path:'about',
-        Component:About
+        path: 'about',
+        Component: About
       },
       {
-        path:'contact',
-        Component:Contact
+        path: 'contact',
+        Component: Contact
       }
+    ]
+  },
+  {
+    path: 'dashboard',
+    element: <PrivateRouter><DashboardLayout></DashboardLayout></PrivateRouter>,
+
+    children: [
+      {
+        index: true,
+        Component: MyPlants,
+        loader: () => fetch("https://flora-nest-server.vercel.app/plants")
+      },
+      {
+        path: 'myplants',
+        Component: MyPlants,
+        loader: () => fetch("https://flora-nest-server.vercel.app/plants")
+
+      },
+      {
+
+        path: 'allPlants',
+        element: <AllPlants />,
+        loader: () => fetch("https://flora-nest-server.vercel.app/plants")
+      },
+
     ]
   },
   {

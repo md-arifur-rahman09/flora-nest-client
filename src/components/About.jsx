@@ -1,7 +1,7 @@
 import React from "react";
 
 const About = () => {
-    
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-6 py-12">
       <div className="max-w-4xl  text-center">
@@ -9,20 +9,21 @@ const About = () => {
         <h1 className="text-4xl font-bold text-gray-800 mb-6">About Us</h1>
 
         {/* Image */}
-        <img 
-          src="https://images.pexels.com/photos/32107832/pexels-photo-32107832/free-photo-of-close-up-of-white-jasmine-on-dark-background.jpeg?auto=compress&cs=tinysrgb&w=600" 
-          alt="Nature & Plants" 
-          className="border max-w-full object-cover  max-h-[400px]  mx-auto rounded-lg shadow-md"
+        <img
+          src="https://images.pexels.com/photos/32107832/pexels-photo-32107832/free-photo-of-close-up-of-white-jasmine-on-dark-background.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          alt="Nature & Plants"
+          className="w-full h-[300px] md:h-[450px] lg:h-[500px] object-cover rounded-lg shadow-md"
         />
+
 
         {/* Description */}
         <p className="text-lg text-gray-600 mt-6">
-          Welcome to <span className="font-semibold text-blue-600">Flora Nest</span>, your go-to platform for exploring the beauty of flower trees. 
-          We are passionate about bringing nature closer to you, providing insights, tips, and an ever-growing collection of unique plants. 
+          Welcome to <span className="font-semibold text-blue-600">Flora Nest</span>, your go-to platform for exploring the beauty of flower trees.
+          We are passionate about bringing nature closer to you, providing insights, tips, and an ever-growing collection of unique plants.
         </p>
 
         <p className="text-lg text-gray-600 mt-4">
-          Whether you're a **gardening enthusiast**, a **nature lover**, or simply curious about different plant species, we've got you covered. 
+          Whether you're a **gardening enthusiast**, a **nature lover**, or simply curious about different plant species, we've got you covered.
           Discover the wonders of sunlight, soil, water care, and everything you need to nurture plants in their full bloom!
         </p>
 
