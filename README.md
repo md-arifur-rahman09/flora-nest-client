@@ -13,7 +13,7 @@ This project is part of the **Flora Nest** ecosystem, where users can explore bo
 
 ## 📸 Screenshot
 
-![Flora Nest Screenshot](https://i.ibb.co/YTr6kQ6/md-arifur-rahman-banner.png)
+![Flora Nest Screenshot](https://i.postimg.cc/ZK4t8Kxc/flora-nest.jpg)
 
 ---
 
